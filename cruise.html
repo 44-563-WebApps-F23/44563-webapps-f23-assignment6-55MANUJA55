@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cruise web page</title>
+    </head>
+ 
+<body>
+
+<h2>Manuja Prasadam goes on a cruise</h2>
+
+<div class="container">
+    <form>
+       
+        <input type="checkbox" id="sharescabin" name="sharescabin" value="True">
+        <label for="sharescabin">Shares Cabin</label> <br>
+     
+        <input type="checkbox" id="breakfast" name="breakfast" value="True">
+        <label for="breakfast">Breakfast</label> <br>
+    
+        <input type="checkbox" id="poolpass" name="poolpass" value="False">
+        <label for="poolpass">Pool Pass</label> <br>
+    
+        <input type="button" class="btn btn-warning" value="Select a cruise" onclick="selectCruise()">
+    
+    </form> 
+    <form>
+        <label for="size">Enter the number of days</label>
+        <input type="text" id="size" name="size" value="days"> <br>
+        
+        <label for="size">Enter price</label>
+        <input type="text" id="price" name="price"> <br>
+    
+        <input type="button" class="btn btn-success" value="Update the cruise" onclick="updateCruise()">
+    </form>
+    <p id="result">This text will be replaced </p>
+    </div>
+    </div>
+    <script> 
+        var my_cruise={};
+        function  selectCruise()
+        {
+            my_vacation={};
+            let sharesCabin=document.getElementById("sharescabin").checked
+            let breakFast=document.getElementById("breakfast").checked
+            let poolPass=document.getElementById("poolpass").checked
+        
+            if(sharesCabin)
+            {
+                my_cruise.sharescabin=true;
+            }
+            else
+            {
+                my_cruise.sharescabin=false;
+            }
+            if(breakFast)
+            {
+                my_cruise.breakfast=true;
+            }
+            else
+            {
+                my_cruise.breakfast=false;
+            }
+            if(poolPass)
+            {
+                my_cruise.poolpass=true;
+            }
+            else
+            {
+                my_cruise.poolpass=false;
+            }
+            document.getElementById("result").innerHTML=JSON.stringify(my_cruise)
+            sharesCabin=document.getElementById("sharescabin").checked = false;
+            breakFast=document.getElementById("breakfast").checked = false;
+            poolPass=document.getElementById("poolpass").checked = false;
+        }
+        function updateCruise()
+        {
+            let size=document.getElementById("size").value;
+            let price=document.getElementById("price").value;
+            my_cruise["size"]=size;
+            my_cruise["price"]=price;
+        
+            document.getElementById("result").innerHTML=JSON.stringify(my_cruise)
+        }
+        
+        </script>
+
+
+</body>
+</html> 
