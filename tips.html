@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html>
- <head>
+
+<head>
     <title>tips web page</title>
- </head>
+</head>
+
 <body>
 
-<h2>Manuja Prasadam shows tip amounts</h2>
-<div class="container">
-<form>
-    <div class="form-group">
-        <label for="basevalue">Enter base amount </label>
-        <input type ="number" id="basevalue" name="basevalue" value=50> <br>
+    <h2>Manuja Prasadam shows tip amounts</h2>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="basevalue">Enter base amount </label>
+                <input type="number" id="basevalue" name="basevalue" value=50> <br>
+            </div>
+            <div class="form-group">
+                <label for="tipvalue">Enter the tip percent</label>
+                <input type="number" id="tipvalue" name="tipvalue" value=15> <br>
+            </div>
+            <input type="button" class="btn btn-warning" onclick="tips()" value="Show tip">
+        </form>
+
+
+        <p id="result">This text will be replaced </p>
     </div>
-    <div class="form-group">
-        <label for="tipvalue">Enter the tip percent</label>
-        <input type ="number" id="tipvalue" name="tipvalue" value=15> <br>
-    </div>
-    <input type="button" class="btn btn-warning" onclick="tips()" value="Show tip">
-</form>
+    <script>
+        function tips() {
+            baseAmount = document.getElementById("basevalue").value
+            tip = Number(document.getElementById("tipvalue").value)
+            let myOutput = ""
 
+            for (let i = 0; i <= 16; i = i + 4) {
+                let tipAmount = tip + i;
+                let amount = baseAmount * tipAmount / 100;
+                myOutput =myOutput+tipAmount + "% is " + amount + "; "
+            }
 
-<p id="result">This text will be replaced </p>
-</div>
-<script>
-    function tips()
-    {   
-        let basevalue=document.getElementById("basevalue").value;
-        let convertedvalue=document.getElementById("tipvalue").value;
-        let myOutput="";
-        if (convertedvalue - Math.floor(convertedvalue) != 0)
-        {
-          for (let i = 0; i < 5; i++) 
-          {
-            let conversion=((basevalue*(Math.floor(Math.pow(2,i))))*convertedvalue).toFixed(1);
-            myOutput=myOutput+" "+basevalue*(Math.pow(2,i))+" is "+conversion+"; ";
+            out = document.getElementById("result");
+            out.innerHTML = "Tips are: " + myOutput
 
-          }
-        } 
-        else 
-        {
-          for (let i = 0; i < 5; i++) 
-          {
-            let conversion=((basevalue*(Math.pow(2,i)))*convertedvalue);
-            myOutput=myOutput+" "+basevalue*(Math.pow(2,i))+" is "+conversion+"; ";
-          }
         }
-        document.getElementById("result").innerHTML="Tips are: "+myOutput;
-    
-    }
-</script>
+    </script>
 </body>
-</html> 
+
+</html>
