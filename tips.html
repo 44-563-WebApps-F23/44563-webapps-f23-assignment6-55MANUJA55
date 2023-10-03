@@ -32,12 +32,11 @@
 
             for (let i = 0; i <= 16; i = i + 4) {
                 let tipAmount = tip + i;
-                let amount = baseAmount * tipAmount / 100;
-                myOutput =myOutput+tipAmount + "% is " + amount + "; "
+                let totalamount = baseAmount * tipAmount / 100;
+                myOutput =myOutput+tipAmount + "% is " + totalamount + "; "
             }
 
-            out = document.getElementById("result");
-            out.innerHTML = "Tips are: " + myOutput
+            out = document.getElementById("result").innerHTML = "Tips are: " + myOutput;
 
         }
     </script>
